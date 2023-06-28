@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# while loop to print best school
+k=0
+while (( k < 10 ))
+do
+	echo "Best School"
+	(( k++ ))
+done
