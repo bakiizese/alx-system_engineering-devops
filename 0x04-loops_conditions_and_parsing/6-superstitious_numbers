@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# using while and case
+k=1
+while ((k < 21))
+do
+	case $k in
+		4)
+			echo "$k"
+			echo "bad luck from China";;
+		9)
+			echo "$k"
+			echo "bad luck from Japan";;
+		17)
+			echo "$k"
+			echo "bad luck from Italy";;
+		*)
+			echo "$k"
+	esac
+	((k++))
+done
