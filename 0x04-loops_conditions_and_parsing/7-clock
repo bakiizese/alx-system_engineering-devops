@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# clock
+n=0
+while ((n <= 12))
+do
+	echo "Hour: $n"
+	k=1
+	while ((k <= 59))
+	do
+		echo "$k"
+		(( k++ ))
+	done
+	(( n++ ))
+done

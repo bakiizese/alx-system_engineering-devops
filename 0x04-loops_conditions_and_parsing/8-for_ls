@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# list all after first dash
+n=$(ls)
+for k in $n
+do
+	echo "$k" | cut -d '-' -f2
+done
