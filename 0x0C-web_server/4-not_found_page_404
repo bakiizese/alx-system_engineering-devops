@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
 #page not found
 
+#!/usr/bin/env bash
+#redirction
 
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World" | sudo tee /var/www/html/index
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.google.com/ permanent;' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html > /dev/null
+sed -i "46i error_page 404 /custom_404.html;" /etc/nginx/sites-available/default
+sudo service nginx restart
