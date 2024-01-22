@@ -2,10 +2,9 @@
 #setting up ufw
 sudo apt update
 sudo apt-get install ufw
-sudo ufw reset
 sudo sed -i 's/IPV6=.*/IPV6=yes/' /etc/default/ufw
 sudo ufw default deny incoming
 sudo ufw enable
 sudo ufw allow 22/tcp
-sudo ufw allow 433/tcp
+sudo ufw allow 443/tcp
 sudo ufw allow 80/tcp
