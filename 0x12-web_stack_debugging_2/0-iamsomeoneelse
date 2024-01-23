@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #run whoami in www-data user with out changeing current user
-sudo -u $1 whoami
+sudo -u "$1" whoami
