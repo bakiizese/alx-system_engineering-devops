@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 #Backup
-mysqldump -uroot -p"$1" --all-databases > backup.sql
+#mysqldump -uroot -p"$1" --all-databases > backup.sql
+mysqldump -v --opt --events --routines --triggers --default-character-set=utf8 -u root -p"$1" --all-databases > backup.sql
 tar -czf "$(date +%d-%m-%Y)".tar.gz backup.sql
