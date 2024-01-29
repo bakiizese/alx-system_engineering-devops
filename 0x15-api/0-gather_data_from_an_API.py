@@ -5,32 +5,23 @@ import sys
 
 
 if __name__ == '__main__':
-    rl = 'todos'
-    rl2 = 'users'
+    ids = sys.argv[1]
+
     url = 'https://jsonplaceholder.typicode.com/'
+    todo = requests.get(url + 'todos').json()
+    user = requests.get(url + 'users').json()
 
-    response = requests.get(url + rl2)
-
-    if response.status_code == 200:
-        json_data = response.json()
-        for k in json_data:
-            if k['id'] == int(sys.argv[1]):
-                name = k['name']
-        response2 = requests.get(url + rl)
-        if response2.status_code == 200:
-            json_data = response2.json()
-            all = 0
-            done = 0
-            donelist = []
-            for i in json_data:
-                if i['userId'] == int(sys.argv[1]):
-                    all += 1
-                    if i['completed'] is True:
-                        donelist.append(i['title'])
-                        done += 1
-        print("Employee {} is done with tasks({}/{}):".format(name, done, all))
-        for i in donelist:
-            print('\t' + i)
-
-    else:
-        print(f"Error: {response.status_code}")
+    task_by_ids = []
+    tot = 0
+    for tasks in todo:
+        if tasks['userId'] == int(ids):
+            tot += 1
+            if tasks['completed'] is True:
+                task_by_ids.append(tasks['title'])
+    for u in user:
+        if u['id'] == int(ids):
+            name = u['name']
+    print("Employee {} is done with tasks({}/{}): "
+          .format(name, len(task_by_ids), tot))
+    for tsk in task_by_ids:
+        print("\t{}".format(str(tsk)))
