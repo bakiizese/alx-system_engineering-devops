@@ -13,6 +13,7 @@ if __name__ == '__main__':
 
     task_by_ids = []
     tot = 0
+    name = None
     for tasks in todo:
         if tasks['userId'] == int(ids):
             tot += 1
