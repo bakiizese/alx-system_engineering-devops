@@ -12,11 +12,10 @@ if __name__ == '__main__':
     user = requests.get(url + 'users/{}'.format(ids), verify=False).json()
 
     task_by_ids = []
-    name = None
     for tasks in todo:
         if tasks.get('completed') is True:
             task_by_ids.append(tasks.get('title'))
-    print("Employee {} is done with tasks({}/{}): "
+    print("Employee {} is done with tasks({}/{}):"
           .format(user.get('name'), len(task_by_ids), len(todo)))
-    for tsk in task_by_ids:
-        print("\t{}".format(str(tsk)))
+
+    print("\n".join("\t {}".format(tsk) for tsk in task_by_ids))
