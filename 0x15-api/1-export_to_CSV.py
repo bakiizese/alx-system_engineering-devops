@@ -13,14 +13,8 @@ if __name__ == '__main__':
                         format(ids)).json()
     user = requests.get(url + 'users/{}'.format(ids)).json()
 
-    task_by_ids = []
-    for tasks in todo:
-        ts = "{} {} {} {}".format(ids, user.get('username'), tasks.get('completed'), tasks.get('title'))
-        task_by_ids.append(ts)
-
-    with open("{}.csv".format(userId), 'w', newline='') as csvfile:
-        taskwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for task in todo:
-            taskwriter.writerow([int(userId), user.get('username'),
-                                 task.get('completed'),
-                                 task.get('title')])
+    with open("{}.csv".format(ids), 'w', newline='') as csvfile:
+        tasks = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        for tsk in todo:
+            tasks.writerow([int(ids), user.get('username'),
+                            tsk.get('completed'), tsk.get('title')])
