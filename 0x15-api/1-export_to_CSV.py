@@ -18,8 +18,9 @@ if __name__ == '__main__':
         ts = "{} {} {} {}".format(ids, user.get('username'), tasks.get('completed'), tasks.get('title'))
         task_by_ids.append(ts)
 
-    print(task_by_ids)
-    with open('{}.csv'.format(ids), mode='w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file, delimiter=' ')
-        csv_writer.writerows(task_by_ids)
-
+    with open("{}.csv".format(userId), 'w', newline='') as csvfile:
+        taskwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        for task in todo:
+            taskwriter.writerow([int(userId), user.get('username'),
+                                 task.get('completed'),
+                                 task.get('title')])
