@@ -4,9 +4,11 @@ import requests
 
 
 after = None
+
+
 def recurse(subreddit, hot_list=[]):
     '''recurse through reddit'''
-    
+
     global after
     user_agent = {'User-Agent': 'api_advanced'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
