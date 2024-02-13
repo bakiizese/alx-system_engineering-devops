@@ -11,7 +11,6 @@ def count_words(subreddit, word_list, new_after='', words_dict={}):
                        headers={'User-Agent': 'api_advanced'},
                        params={'after': new_after},
                        allow_redirects=False)
-    
     if res.status_code != 200:
         return
 
