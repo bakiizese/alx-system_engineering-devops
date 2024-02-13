@@ -8,7 +8,7 @@ def number_of_subscribers(subreddit):
     if (subreddit is None or type(subreddit) is not str):
         return 0
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    hed = {'User-agent': 'Google-Chrome'}
+    hed = {'User-agent': 'api_advanced-project'}
 
     redit = requests.get(url, headers=hed)
     if (redit.status_code == 200):
