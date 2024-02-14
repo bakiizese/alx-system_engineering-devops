@@ -8,13 +8,12 @@ def number_of_subscribers(subreddit):
     if (subreddit is None or type(subreddit) is not str):
         return 0
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    hed = {'User-agent': 'api_advanced'}
+    hed = {'User-agent': 'api_advanced/0-subs.py'}
 
     redit = requests.get(url, headers=hed)
     if (redit.status_code == 200):
-        redit = redit.json()
+        redit = redit(json)
         j = redit['data']['subscribers']
         return j
     else:
-        print(redit.status_code)
         return 0
